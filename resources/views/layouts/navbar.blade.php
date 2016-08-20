@@ -24,6 +24,12 @@
                     <li>
                         <a href="contact.html">Contact</a>
                     </li>
+
+                    @if ( Auth::check() )
+                        <li>
+                            <a href="#">Manage</a>
+                        </li>
+                    @endif
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

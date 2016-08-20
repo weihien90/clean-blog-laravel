@@ -16,7 +16,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontawesome/4.6.3/css/font-awesome.min.css">
 
     <!-- Clean Blog CSS -->
-    <link href="css/clean-blog.min.css" rel="stylesheet">
+    <link href="{{ asset('css/clean-blog.min.css') }}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -48,7 +51,7 @@
     <script src="https://cdn.jsdelivr.net/g/jquery@3.1.0,bootstrap@3.3.7"></script>
 
     <!-- Clean Blog JavaScript -->
-    <script src="js/clean-blog.min.js"></script>
+    <script src="{{ asset('js/clean-blog.min.js') }}"></script>
 
 </body>
 
