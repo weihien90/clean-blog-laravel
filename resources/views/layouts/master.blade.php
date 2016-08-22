@@ -15,6 +15,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontawesome/4.6.3/css/font-awesome.min.css">
 
+    <!-- Vendor CSS -->
+    @section('vendor-css')
+    @show
+
     <!-- Clean Blog CSS -->
     <link href="{{ asset('css/clean-blog.min.css') }}" rel="stylesheet">
 
@@ -50,8 +54,16 @@
     <!-- jQuery & Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/g/jquery@3.1.0,bootstrap@3.3.7"></script>
 
+    <!-- Vendor Javascript -->
+    @section('vendor-js')
+    @show
+
     <!-- Clean Blog JavaScript -->
     <script src="{{ asset('js/clean-blog.min.js') }}"></script>
+
+    <!-- Custom Javascripts -->
+    @section('scripts')
+    @show
 
 </body>
 
