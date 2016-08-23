@@ -46,6 +46,12 @@
     <!-- Content -->
     @yield('content')
 
+    <!-- Flash Message -->
+    @if( Session::has('message') )
+        <div class="col-md-6 col-md-offset-3">
+        <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+    @endif
+
     <hr>
 
     <!-- Footer -->
