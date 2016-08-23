@@ -20,4 +20,7 @@ Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
-
+// Management routes
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('post', 'PostController');
+});
