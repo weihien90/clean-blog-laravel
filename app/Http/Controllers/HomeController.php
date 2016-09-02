@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
+
+use Markdown;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -11,6 +14,12 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('home');
+        $posts = Post::simplePaginate(10);
+        foreach ($posts as $post) {
+            $post->content = Markdown::convertToHtml($post->content);
+            $post->content = str_limit( strip_tags($post->content), 250);
+        }
+
+        return view('home', compact('posts'));
     }
 }
