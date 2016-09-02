@@ -138,6 +138,11 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
+	 * Package Service Providers...
+	 */
+	GrahamCampbell\Markdown\MarkdownServiceProvider::class,
+
+        /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
@@ -193,6 +198,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
 
+        'Markdown'  => GrahamCampbell\Markdown\Facades\Markdown::class,
     ],
 
 ];
