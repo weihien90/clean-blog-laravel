@@ -44,6 +44,7 @@ class PostController extends Controller
         $post->category = $request->category;
         $post->title = $request->title;
         $post->slug = str_slug($post->title);
+        $post->cover_image = $request->input('cover-image');
         $post->content = $request->content;
         $post->save();
 

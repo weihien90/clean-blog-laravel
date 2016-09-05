@@ -43,6 +43,11 @@
                         <input type="text" name="title" class="form-control" placeholder="Title">
                     </div>
 
+                    <div class="form-group">
+                        <label for="cover-image">Cover Image</label>
+                        <input type="url" name="cover-image" class="form-control" placeholder="Cover Image">
+                    </div>
+
                     <textarea id="new-blogpost" name="content"></textarea>
 
                     <input type="submit" value="Post" class="btn btn-primary">
