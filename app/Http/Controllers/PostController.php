@@ -42,6 +42,7 @@ class PostController extends Controller
         $post = new Post;
         $post->category = $request->category;
         $post->title = $request->title;
+        $post->slug = str_slug($post->title);
         $post->content = $request->content;
         $post->save();
 
