@@ -61,6 +61,14 @@
 
 @section('scripts')
 <script>
-    var simplemde = new SimpleMDE({ element: $("#new-blogpost")[0] });
+var simplemde = new SimpleMDE({
+    element: $("#new-blogpost")[0],
+    autosave: {
+        enabled: true,
+        uniqueId: "postContent"
+    },
+    showIcons: ["code"],
+    indentWithTabs: false,
+});
 </script>
 @endsection
