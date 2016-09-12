@@ -70,9 +70,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -82,9 +82,16 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+      $post->category = $request->category;
+      $post->title = $request->title;
+      $post->slug = str_slug($post->title);
+      $post->cover_image = $request->input('cover-image');
+      $post->content = $request->content;
+      $post->save();
+
+      return redirect()->back()->with('message', 'Post updated');
     }
 
     /**

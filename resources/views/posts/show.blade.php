@@ -28,6 +28,11 @@
 
                 {!! $post->content !!}
 
+                @if ( Auth::check() )
+                    <br>
+                    <a href="{{ route('post.edit', ['post'=>$post->slug]) }}" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a>
+                @endif
+
             </div>
         </div>
     </div>
