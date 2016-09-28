@@ -19,3 +19,15 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Post::class, function (Faker\Generator $faker) {
+    $title = $faker->sentence(5);
+    $slug = str_slug($title);
+    return [
+        'title' => $title,
+        'slug' => $slug,
+        'category' => "Test",
+        'cover_image' => "https://placehold.it/1900x872",
+        'content' => implode( "\n\n", $faker->paragraphs(20) ),
+    ];
+});
