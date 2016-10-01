@@ -12,8 +12,12 @@
 */
 
 // Homepage
-Route::get('/', 'HomeController@index');
+Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('/home', 'HomeController@index');
+
+// Static pages
+Route::get('/about', ['as' => 'about', 'uses' => 'StaticPageController@about']);
+Route::get('/contact', ['as' => 'contact', 'uses' => 'StaticPageController@contact']);
 
 // Authentication routes
 Route::get('auth/login', 'Auth\AuthController@getLogin');
