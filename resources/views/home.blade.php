@@ -23,7 +23,9 @@
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 @foreach ($posts as $post)
                 <div class="post-preview">
-                    <a href="{{ route('post.show', ['post' => $post->slug]) }}">
+                    <a href="/{{ $post->created_at->year }}/{{ $post->created_at->month }}/{{ 
+                    $post->created_at->day }}/{{ $post->slug }}">
+
                         <h2 class="post-title">
                             {{ $post->title }}
                         </h2>

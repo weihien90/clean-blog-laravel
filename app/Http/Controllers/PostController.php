@@ -57,8 +57,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($year, $month, $day, $slug)
     {
+        $post = Post::whereSlug($slug)->first();
         $post->content = Markdown::convertToHtml($post->content);
 
         return view('posts.show', compact('post'));

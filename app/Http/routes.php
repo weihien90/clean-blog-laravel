@@ -22,5 +22,8 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
 // Management routes
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('post', 'PostController');
+    Route::resource('post', 'PostController', ['except' => ['show']]);
 });
+
+// Show Blogpost
+Route::get('{year}/{month}/{day}/{slug}', 'PostController@show');
