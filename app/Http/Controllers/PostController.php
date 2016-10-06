@@ -118,6 +118,6 @@ class PostController extends Controller
     public function archive(Post $post)
     {
         $post->delete();
-        return redirect()->back()->with('message', 'This post is archived and will not show in homepage.');
+        return redirect()->back();
     }
 }
