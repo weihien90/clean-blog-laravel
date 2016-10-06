@@ -14,7 +14,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $posts = Post::simplePaginate(10);
+        $posts = Post::orderBy('created_at', 'desc')->simplePaginate(10);
         foreach ($posts as $post) {
             $post->content = Markdown::convertToHtml($post->content);
             $post->content = str_limit( strip_tags($post->content), 250);
