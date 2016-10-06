@@ -54,12 +54,15 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $year
+     * @param  int  $month
+     * @param  int $day
+     * @param  string  $slug
      * @return \Illuminate\Http\Response
      */
     public function show($year, $month, $day, $slug)
     {
-        $post = Post::whereSlug($slug)->first();
+        $post = Post::withTrashed()->whereSlug($slug)->first();
         $post->content = Markdown::convertToHtml($post->content);
 
         return view('posts.show', compact('post'));
@@ -68,7 +71,7 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
     public function edit(Post $post)
@@ -80,7 +83,7 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Post $post)
@@ -98,11 +101,23 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        
+    }
+
+    /**
+     * Archive the specified resource.
+     *
+     * @param  \App\Post  $post
+     * @return \Illuminate\Http\Response
+     */
+    public function archive(Post $post)
+    {
+        $post->delete();
+        return redirect()->back()->with('message', 'This post is archived and will not show in homepage.');
     }
 }

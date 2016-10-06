@@ -30,7 +30,9 @@ class RouteServiceProvider extends ServiceProvider
 
         // Register Route Model Binding
         $router->bind('post', function($value) {
-            return \App\Post::whereSlug($value)->first();
+            return \App\Post::withTrashed()
+                ->whereSlug($value)
+                ->first();
         });
     }
 
