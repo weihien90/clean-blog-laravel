@@ -23,11 +23,14 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->define(App\Post::class, function (Faker\Generator $faker) {
     $title = $faker->sentence(5);
     $slug = str_slug($title);
+    $date = date_format( $faker->dateTimeThisYear($max = 'now'), 'Y-m-d H:i:s');
     return [
         'title' => $title,
         'slug' => $slug,
         'category' => "Test",
         'cover_image' => "https://placehold.it/1900x872",
         'content' => implode( "\n\n", $faker->paragraphs(20) ),
+        'created_at' => $date,
+        'updated_at' => $date,
     ];
 });
