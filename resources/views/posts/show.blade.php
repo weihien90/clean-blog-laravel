@@ -36,7 +36,12 @@
                     <br>
                     <a href="{{ route('post.edit', ['post'=>$post->slug]) }}" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a>
                     @if ( !$post->trashed() )
-                        <a href="{{ route('post.archive', ['post'=>$post->slug]) }}" class="btn btn-warning"><i class="fa fa-archive"></i> Archive</a>
+                    <div style="display: inline-block">
+                        <form action="{{ route('post.archive', ['post'=>$post->slug]) }}" method="POST">
+                            {!! csrf_field() !!}
+                            <button type="submit" class="btn btn-warning"><i class="fa fa-archive"></i> Archive</button>
+                        </form>
+                    </div>
                     @endif
                 @endif
 
