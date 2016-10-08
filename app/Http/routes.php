@@ -25,8 +25,11 @@ Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
 // Management routes
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth'], function () {    
+    Route::get('/manage', ['as' => 'manage', 'uses' => 'ManageController@index']);
+
     Route::get('post/{post}/archive', ['as' => 'post.archive', 'uses' => 'PostController@archive']);
+    Route::get('post/archived', ['as' => 'post.archived', 'uses' => 'PostController@archived']);
     Route::resource('post', 'PostController', ['except' => ['show']]);
 });
 

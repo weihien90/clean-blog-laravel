@@ -24,7 +24,7 @@
 
                     @if ( Auth::check() )
                         <li>
-                            <a href="#">Manage</a>
+                            <a href="{{ route('manage') }}">Manage</a>
                         </li>
                     @endif
                 </ul>

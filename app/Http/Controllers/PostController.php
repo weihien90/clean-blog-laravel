@@ -120,4 +120,23 @@ class PostController extends Controller
         $post->delete();
         return redirect()->back();
     }
+
+    /**
+     * Display the listings of archived blogpost.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function archived()
+    {
+        $archived_posts = Post::onlyTrashed()
+            ->orderBy('created_at', 'desc')
+            ->simplePaginate(10);
+
+        foreach ($archived_posts as $post) {
+            $post->content = Markdown::convertToHtml($post->content);                                                                                
+            $post->content = str_limit( strip_tags($post->content), 250);
+        }
+
+        return view('posts.archived', compact('archived_posts'));
+    }
 }
