@@ -29,6 +29,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/manage', ['as' => 'manage', 'uses' => 'ManageController@index']);
 
     Route::post('post/{post}/archive', ['as' => 'post.archive', 'uses' => 'PostController@archive']);
+    Route::post('post/{post}/restore', ['as' => 'post.restore', 'uses' => 'PostController@restore']);
     Route::get('post/archived', ['as' => 'post.archived', 'uses' => 'PostController@archived']);
     Route::resource('post', 'PostController', ['except' => ['show']]);
 });

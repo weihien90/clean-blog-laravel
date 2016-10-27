@@ -35,14 +35,19 @@
                 @if ( Auth::check() )
                     <br>
                     <a href="{{ route('post.edit', ['post'=>$post->slug]) }}" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a>
-                    @if ( !$post->trashed() )
                     <div style="display: inline-block">
+                        @if ( $post->trashed() )
+                        <form action="{{ route('post.restore', ['post'=>$post->slug]) }}" method="POST">
+                            {!! csrf_field() !!}
+                            <button type="submit" class="btn btn-success"><i class="fa fa-rotate-left"></i> Restore</button>
+                        </form>
+                        @else
                         <form action="{{ route('post.archive', ['post'=>$post->slug]) }}" method="POST">
                             {!! csrf_field() !!}
                             <button type="submit" class="btn btn-warning"><i class="fa fa-archive"></i> Archive</button>
                         </form>
+                        @endif
                     </div>
-                    @endif
                 @endif
 
             </div>

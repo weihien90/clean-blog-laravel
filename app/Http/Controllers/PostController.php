@@ -122,6 +122,18 @@ class PostController extends Controller
     }
 
     /**
+     * Restore the archived resource.
+     *
+     * @param  \App\Post  $post
+     * @return \Illuminate\Http\Response
+     */
+    public function restore(Post $post)
+    {
+        $post->restore();
+        return redirect()->back();
+    }
+
+    /**
      * Display the listings of archived blogpost.
      *
      * @return \Illuminate\Http\Response
