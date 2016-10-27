@@ -19,7 +19,13 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::orderBy('created_at', 'desc')->paginate(20);
+        foreach ($posts as $post) {
+            $post->content = Markdown::convertToHtml($post->content);
+            $post->content = str_limit( strip_tags($post->content), 250);
+        }
+
+        return view('posts.index', compact('posts'));
     }
 
     /**
