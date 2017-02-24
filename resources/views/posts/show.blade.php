@@ -26,12 +26,6 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-content">
 
-                @if ( $post->trashed() )
-                    <p class="alert alert-warning">This post had been archived.</p>
-                @endif
-
-                {!! $post->content !!}
-
                 @if ( Auth::check() )
                     <br>
                     <a href="{{ route('post.edit', ['post'=>$post->slug]) }}" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a>
@@ -49,6 +43,12 @@
                         @endif
                     </div>
                 @endif
+
+                @if ( $post->trashed() )
+                    <p class="alert alert-warning">This post had been archived.</p>
+                @endif
+
+                {!! $post->content !!}
 
             </div>
         </div>
